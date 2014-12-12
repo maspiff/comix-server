@@ -36,7 +36,7 @@ debug("request_path: ".$request_path);
 $path = $parent_path.$request_path;
 debug("path: ".$path);
 
-if (is_dir($path)) {
+if (@is_dir($path)) {
     list_dir($path);
 } else {
     $path_parts = pathinfo($path);
@@ -273,7 +273,7 @@ function is_support($file_name, $is_dir=true) {
         if (in_array($ext, $allows)) {
             return true;
         } else {
-            if (is_dir($path."/".$file_name))                                   
+            if (@is_dir($path."/".$file_name))                                   
                 return true;    
             return false;
         }
