@@ -378,9 +378,9 @@ function change_encoding($name) {
     # we try to change encoding from source to source
     # and check whether the length has changed.
     # Can we do better?
-    $tmp = iconv($source_encoding, $source_encoding, $name);
+    $tmp = @iconv($source_encoding, $source_encoding, $name);
     if (strlen($tmp) == strlen($name)) {
-        return iconv($source_encoding, $target_encoding, $name);
+        return @iconv($source_encoding, $target_encoding, $name);
     } else {
         return $name;
     }
